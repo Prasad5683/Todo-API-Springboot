@@ -16,8 +16,9 @@ public class TodoController {
         todoList.add(new Todo(2,false,"Todo2",2));
     }
     @GetMapping("/")
-    @ResponseStatus (HttpStatus.ACCEPTED)
-    public ResponseEntity< List<Todo>>getTodos(){
+//    @ResponseStatus (HttpStatus.ACCEPTED)
+    public ResponseEntity< List<Todo>>getTodos(@RequestParam (required = false , defaultValue = "true") boolean isCompleted){
+        System.out.println("Incoming Query param "+ isCompleted);
         return ResponseEntity.status(HttpStatus.OK).body(todoList);
     }
     @PostMapping("/")
